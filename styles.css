@@ -1,0 +1,67 @@
+/* author: Sai Vivek Vangaveti
+functionality: Styles for the survey form html */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    width: auto;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.checkbox-campus label {
+    display: inline-block;
+}
+
+.checkbox-campus,
+.hearaboutus {
+    margin-bottom: 10px;
+}
+
+.hearaboutus label {
+    display: inline-block;
+}
+
+textarea {
+    height: 100px;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.max-width-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
