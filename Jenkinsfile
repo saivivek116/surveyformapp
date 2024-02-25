@@ -10,15 +10,15 @@ pipeline{
 					checkout scm
 					sh 'rm -rf *.war'
 					sh 'jar -cvf surveyform.war -C src/ .'
-                    sh "sudo docker login -u saivivek116 -p ${DOCKERHUB_PASS}"
-					sh 'sudo docker build -t saivivek116/swe645assignment2 .'
+					sh "echo ${DOCKERHUB_PASS} | docker login -u saivivek116 --password-stdin"
+					sh 'docker build -t saivivek116/swe645assignment2 .'
 				}
 			}
 		}
 		stage("Pushing image to docker"){
 			steps{
 				script{
-					sh 'sudo docker push saivivek116/swe645assignment2'
+					sh 'docker push saivivek116/swe645assignment2'
 				}
 			}
 		}
