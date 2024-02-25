@@ -10,7 +10,6 @@ pipeline{
 					checkout scm
 					sh 'rm -rf *.war'
 					sh 'jar -cvf surveyform.war -C src/ .'
-					sh 'echo "wfm4yjw1YUV8nvr\!tmz" | docker login -u saivivek116 --password-stdin'
                     sh "docker login -u saivivek116 -p ${DOCKERHUB_PASS}"
 					sh 'docker build -t saivivek116/swe645assignment2 .'
 				}
