@@ -26,7 +26,16 @@ pipeline{
 			steps{
 				script{
 				
-					sh 'kubectl rollout restart deploy assignment2-swe645 -n assignment2namespace'
+					String kubeconfigPath = '/var/lib/jenkins/.kube/config'
+            
+					// Path to the manifest file
+					String manifestPath = '/home/ubuntu/manifest.yaml'
+            
+					// Apply the manifest file to your Kubernetes cluster
+					sh "kubectl --kubeconfig=${kubeconfigPath} apply -f ${manifestPath}"
+            
+					// Assuming your deployment's name is 'deployment', replace 'deployment' with your actual deployment name if different
+					sh "kubectl --kubeconfig=${kubeconfigPath} rollout status deployment/deployment"
 				}
 			}
 		}
