@@ -33,6 +33,9 @@ pipeline{
             
 					// Apply the manifest file to your Kubernetes cluster
 					sh "kubectl --kubeconfig=${kubeconfigPath} apply -f ${manifestPath}"
+
+					// Force a new rollout for the deployment
+            		sh "kubectl --kubeconfig=/var/lib/jenkins/.kube/config rollout restart deployment/deployment"
             
 					// Assuming your deployment's name is 'deployment', replace 'deployment' with your actual deployment name if different
 					sh "kubectl --kubeconfig=${kubeconfigPath} rollout status deployment/deployment"
