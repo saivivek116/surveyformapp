@@ -1,0 +1,41 @@
+# author:
+# Sai Vivek Vangaveti - G01413358
+# Venkata Sree Divya Kasturi - G01411963
+# Mary Ashwitha Gopu - G01408743
+# Gangadhara Sai Kutukuppala - G01444780
+# functionality: yaml file for deploying the pods
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: swe645assignment2
+  template:
+    metadata:
+      labels:
+        app: swe645assignment2
+    spec:
+      containers:
+      - name: swe645assignment2
+        image: saivivek116/swe645assignment2
+        ports:
+        - containerPort: 8080
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  type: NodePort
+  selector:
+    app: swe645assignment2
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 30007
